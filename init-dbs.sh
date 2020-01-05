@@ -24,5 +24,5 @@ InitialiseNextcloud(){
    fi
 }
 
-if [ ! -z "${KODI}" ] && [ "${KODI}" = "Enabled" ]; then InitialiseKodi; fi
-if [ ! -z "${NEXTCLOUD}" ] && [ "${NEXTCLOUD}" = "Enabled" ]; then InitialiseNextcloud; fi
+if [ ! -z "${KODIENABLED}" ] && [ "${KODIENABLED}" = "Enabled" ]; then InitialiseKodi; fi
+if [ ! -z "${NEXTCLOUDENABLED}" ] && [ "${NEXTCLOUDENABLED}" = "Enabled" ]; then InitialiseNextcloud; fi
