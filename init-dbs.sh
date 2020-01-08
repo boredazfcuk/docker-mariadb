@@ -2,7 +2,7 @@
 
 InitialiseKodi(){
    if [ "$(mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --execute="SELECT User FROM mysql.user;" | grep -c kodi)" = 0 ]; then
-      echo "$(date '+%c') INFO   : Creating user kodi with password: ${KODIPASSWORD}"
+      echo "$(date '+%c') INFO   : Creating user kodi with password: ${KODIPASSWORD:=Skibidibbydibyodadubdub}"
       mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --execute="CREATE USER 'kodi' IDENTIFIED BY '${KODIPASSWORD}'; GRANT ALL PRIVILEGES ON *.* TO 'kodi'; FLUSH PRIVILEGES;"
    else
       echo "$(date '+%c') INFO   : User kodi already exists"
@@ -24,5 +24,12 @@ InitialiseNextcloud(){
    fi
 }
 
-if [ ! -z "${KODIENABLED}" ] && [ "${KODIENABLED}" = "Enabled" ]; then InitialiseKodi; fi
-if [ ! -z "${NEXTCLOUDENABLED}" ] && [ "${NEXTCLOUDENABLED}" = "Enabled" ]; then InitialiseNextcloud; fi
+if [ ! -z "${KODIENABLED}" ] && [ "${KODIENABLED}" = "True" ]; then
+   if [ "${KODIPASSWORD}" = "kodi" ]; then
+      echo "$(date '+%c') ERROR:   Will not create kodi user with default Kodi password. This is a security risk as it needs root priviliges during installation/upgrade"
+      sleep 60
+      exit 1
+   fi
+   InitialiseKodi
+fi
+if [ ! -z "${NEXTCLOUDENABLED}" ] && [ "${NEXTCLOUDENABLED}" = "True" ]; then InitialiseNextcloud; fi
