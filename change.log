@@ -1,0 +1,4 @@
+20200212
+
+ - Change: Function to wait for MariaDB to start now check the port is available, rather than attempting to log in. This as a more accurate test as an incorrect password would prevent its launch
+ - Change: ^^^ same for healthcheck

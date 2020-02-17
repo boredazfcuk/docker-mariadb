@@ -3,7 +3,7 @@ MAINTAINER boredazfcuk
 
 RUN echo "$(date '+%d/%m/%Y - %H:%M:%S') | ***** BUILD STARTED *****" && \
    apt-get update && \
-   apt-get install -y tzdata
+   apt-get install -y tzdata netcat
 
 COPY init-dbs.sh /docker-entrypoint-initdb.d/init-dbs.sh
 COPY healthcheck.sh /usr/local/bin/healthcheck.sh
