@@ -10,7 +10,7 @@ InitialiseKodi(){
 }
 
 InitialiseNextcloud(){
-   if [ "$(mysqlshow --user=root --password="${MYSQL_ROOT_PASSWORD}" | grep -c "${nextcloud_db}")" = 0 ]; then
+   if [ "$(mysqlshow --user=root --password="${MYSQL_ROOT_PASSWORD}" | grep -c "${nextcloud_db}")" -ne 0 ]; then
       echo "$(date '+%c') INFO   : Creating database ${nextcloud_db}"
       mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --execute="CREATE DATABASE ${nextcloud_db};"
    else
