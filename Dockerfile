@@ -1,7 +1,7 @@
 FROM mariadb
 MAINTAINER boredazfcuk
 
-RUN echo "$(date '+%d/%m/%Y - %H:%M:%S') | ***** BUILD STARTED *****" && \
+RUN echo "$(date '+%d/%m/%Y - %H:%M:%S') | ***** BUILD STARTED FOR MARIADB *****" && \
    apt-get update && \
    apt-get install -y tzdata netcat
 
