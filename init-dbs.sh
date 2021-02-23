@@ -24,7 +24,7 @@ InitialiseNextcloud(){
    fi
 }
 
-if [ "${kodi_enabled}" ] && [ "${kodi_enabled}" = "True" ]; then
+if getent hosts kodi >/dev/null 2>&1; then
    if [ "${kodi_password}" = "kodi" ]; then
       echo "$(date '+%c') ERROR:   Will not create kodi user with default Kodi password. This is a security risk as it needs root priviliges during installation/upgrade"
       sleep 60
@@ -32,4 +32,4 @@ if [ "${kodi_enabled}" ] && [ "${kodi_enabled}" = "True" ]; then
    fi
    InitialiseKodi
 fi
-if [ "${nextcloud_enabled}" ] && [ "${nextcloud_enabled}" = "True" ]; then InitialiseNextcloud; fi
+if getent hosts nextcloud >/dev/null 2>&1; then InitialiseNextcloud; fi
