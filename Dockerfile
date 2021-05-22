@@ -1,6 +1,7 @@
 FROM mariadb
 MAINTAINER boredazfcuk
-
+# mariadb_version not used, just increment to force a rebuild
+ARG mariadb_version="10.6.0"
 RUN echo "$(date '+%d/%m/%Y - %H:%M:%S') | ***** BUILD STARTED FOR MARIADB *****" && \
    apt-get update && \
    apt-get install -y tzdata netcat
