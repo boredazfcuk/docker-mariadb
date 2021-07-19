@@ -1,4 +1,4 @@
-FROM mariadb
+FROM mariadb:10.5.11
 MAINTAINER boredazfcuk
 # mariadb_version not used, just increment to force a rebuild
 ARG mariadb_version="10.6.0"
