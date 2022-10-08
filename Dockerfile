@@ -8,5 +8,5 @@ RUN echo "$(date '+%d/%m/%Y - %H:%M:%S') | ***** BUILD STARTED FOR MARIADB *****
    apt-get install -y tzdata netcat && \
 echo "$(date '+%d/%m/%Y - %H:%M:%S') | ***** BUILD COMPLETE *****"
 
-COPY --chmod=0755 init-dbs.sh /docker-entrypoint-initdb.d/init-dbs.sh
+COPY --chmod=0755 init-nextclouddb.sh /docker-entrypoint-initdb.d/init-nextclouddb.sh
 COPY --chmod=0755 healthcheck.sh /usr/local/bin/healthcheck.sh
