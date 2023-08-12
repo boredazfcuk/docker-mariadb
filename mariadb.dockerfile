@@ -1,5 +1,5 @@
 #FROM mariadb:10.5.13
-FROM mariadb:latest
+FROM mariadb:lts
 MAINTAINER boredazfcuk
 # mariadb_version not used, just increment to force a rebuild
 ARG mariadb_version="10.9.3-jammy"
